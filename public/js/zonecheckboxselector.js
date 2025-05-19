@@ -1,11 +1,13 @@
 class ZoneCheckboxSelector {
     constructor(container) {
         this.container = container;
+        container.zonecheckboxselector = this;
         this.canvas = document.createElement('canvas');
         this.canvas.className = 'zonecheckboxselector';
 
         this.container.prepend(this.canvas);
         this.context = this.canvas.getContext("2d");
+        this.isEnabled = true;
         this.isDrawing = false;
         this.startX = 0;
         this.startY = 0;
@@ -24,12 +26,23 @@ class ZoneCheckboxSelector {
         window.addEventListener("touchend", (e) => this.endSelection(e.changedTouches[0]));
     }
 
+    enable()
+    {
+        this.isEnabled = true;
+    }
+
+    disable()
+    {
+        this.isEnabled = false;
+    }
+
     resize() {
         this.canvas.width = this.container.clientWidth;
         this.canvas.height = this.container.clientHeight;
     }
 
     startSelection(e) {
+        if (!this.isEnabled) return;
         this.resize();
         const canvas = this.canvas.getBoundingClientRect();
         if(e.clientX >= canvas.left && e.clientX <= canvas.left + canvas.width && e.clientY >= canvas.top && e.clientY <= canvas.top + canvas.height)
@@ -100,4 +113,4 @@ class ZoneCheckboxSelector {
     }
 }
 
-export default ZoneCheckboxSelector;
+//export default ZoneCheckboxSelector;
