@@ -1,0 +1,14 @@
+{
+    "name": "eltharin/zonecheckboxselector",
+    "autoload": {
+        "psr-4": {
+            "Eltharin\\ZoneCheckboxSelectorBundle\\": "src/"
+        }
+    },
+	"description": "zonecheckboxselector Bundle for symfony",
+    "keywords": ["Symfony", "PHP", "Web", "Bundle"],
+    "license": "GPL-3.0",
+	"type": "symfony-bundle",
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
